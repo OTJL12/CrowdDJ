@@ -6,8 +6,8 @@ from spotipy.oauth2 import SpotifyOAuth
 app = Flask(__name__)
 
 # Spotify API credentials
-CLIENT_ID = "7c8dc06e89104cae8a04b8fe831eab12"
-CLIENT_SECRET = "019efe2723424b0aa61d7bfac22723e3"
+CLIENT_ID = "YOUR-CLIENT-ID"
+CLIENT_SECRET = "YOUR-CLIENT-SECRET"
 REDIRECT_URI = "https://localhost:8888/callback"
 SCOPE = "user-modify-playback-state user-read-playback-state"
 
@@ -44,18 +44,6 @@ def add_song():
             return jsonify({"error": "No matching track found."}), 404
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-# Route to view the current queue
-@app.route("/queue")
-def view_queue():
-    queue_data = sp.queue()
-    queue = []
-    if "queue" in queue_data and queue_data["queue"]:
-        for track in queue_data["queue"]:
-            track_name = track["name"]
-            artist_name = track["artists"][0]["name"]
-            queue.append(f"{track_name} by {artist_name}")
-    return render_template("queue.html", queue=queue)
 
 # Route to serve the queue table for iframe
 @app.route("/queue_table")
