@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+            h2 {
+                color: #1DB954;
+                margin: 10px 0;
+            }
+            .now-playing {
+                text-align: center;
+                margin: 20px 0;
+                font-size: 1.2em;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 0;
+                font-size: 1em;
+                font-family: Arial, sans-serif;
+            }
+            th, td {
+                padding: 12px;
+                border: 1px solid #ddd;
+                text-align: left;
+            }
+            th {
+                background-color: #1DB954;
+                color: white;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+<body>
+    <!-- Now Playing Section -->
+    <div class="now-playing">
+        {% if now_playing %}
+            <h2>Now Playing</h2>
+            <p><strong>{{ now_playing.track }}</strong> by <strong>{{ now_playing.artist }}</strong></p>
+        {% else %}
+            <h2>Now Playing</h2>
+            <p><em>No track currently playing.</em></p>
+        {% endif %}
+    </div>
+
+    <!-- Queue Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Track</th>
+                <th>Artist</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(length) %}
+            <tr>
+                <td>{{ i+1 }}</td>
+                <td>{{ queue[i].track }}</td>
+                <td>{{ queue[i].artist }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
