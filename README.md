@@ -1,4 +1,5 @@
 # CrowdDJ
+![Screenshot 2024-12-15 095330](https://github.com/user-attachments/assets/d627118b-b16c-46c2-b4ca-ea38db2040d1)
 CrowdDJ is a program which controls your spotify queue. Its great for parties where guests can add their own songs to the queue with a simple to use Ui.
 
 # Setup
